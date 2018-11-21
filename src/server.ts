@@ -1,6 +1,7 @@
 import errorHandler from 'errorhandler';
 
 import app from './app';
+import db from './db';
 
 /**
  * Error Handler. Provides full stack - remove for production
@@ -17,6 +18,10 @@ const server = app.listen(app.get('port'), () => {
     app.get('env')
   );
   console.log('  Press CTRL-C to stop\n');
+});
+
+db.authenticate().then(function() {
+  console.log('db works');
 });
 
 export default server;
